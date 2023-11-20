@@ -7,6 +7,9 @@ from svae.util import solve_triangular, solve_posdef_from_cholesky
 ### distribution form
 
 def sample(mu, sigma, rng=rng):
+    '''
+    sample from multivariate normal with mean mu and covariance sigma
+    '''
     L = np.linalg.cholesky(sigma)
     return mu + np.dot(L, rng.normal(size=mu.shape))
 
@@ -85,6 +88,9 @@ def natural_lognorm(J, h):
 
 
 def natural_rts_backward_step(next_smooth, next_pred, filtered, pair_param):
+    '''
+    rauch-tung-striebel backward pass in natural parameters
+    '''
     # p = "predicted", f = "filtered", s = "smoothed", n = "next"
     (Jns, hns, mun), (Jnp, hnp), (Jf, hf) = next_smooth, next_pred, filtered
     J11, J12, J22, _ = pair_param

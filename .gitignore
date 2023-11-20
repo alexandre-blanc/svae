@@ -15,3 +15,4 @@
 *.lprof
 /build
 /experiments/*_params.pkl
+venv/

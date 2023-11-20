@@ -5,14 +5,23 @@ from svae.util import solve_symmetric
 
 
 def symmetrize(A):
+    '''
+    returns the symmetric part of A
+    '''
     return (A + A.T)/2.
 
 
 def is_psd(A):
+    '''
+    returns whether the matrix A is symmetric positive semidefinite
+    '''
     return np.allclose(A, A.T) and np.all(np.linalg.eigvalsh(A) >= 0.)
 
 
 def is_posdef(A):
+    '''
+    returns whether the matrix A is symmetric positive definite
+    '''
     return np.allclose(A, A.T) and np.all(np.linalg.eigvalsh(A) > 0.)
 
 
